@@ -52,7 +52,7 @@ body {
 .dropdown-menu {
     display: none;
     list-style-type: none;
-    margin-left: 20px;
+    margin-left: 21px;
 }
 
 .sidebar-menu li:hover .dropdown-menu {
