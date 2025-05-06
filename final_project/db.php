@@ -1,11 +1,19 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = ""; // your MySQL password if any
-$dbname = "admin_panel";
+$host = 'localhost';
+$db   = 'admin_panel';
+$user = 'root';
+$pass = ''; // empty if using XAMPP
+$charset = 'utf8mb4';
 
-$conn = new mysqli($host, $user, $pass, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
+
+try {
+    $conn = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    echo "DB Connection failed: " . $e->getMessage();
+    exit;
 }
-?>
